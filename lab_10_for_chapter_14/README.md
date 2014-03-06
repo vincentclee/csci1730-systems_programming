@@ -63,7 +63,7 @@ Array c output with invalid subscripts:
 ```
 
 ###Template
-```c
+```C
 // Lab 1: TemplateOverload.cpp
 // Using template functions
 #include <iostream>
