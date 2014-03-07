@@ -149,3 +149,278 @@ more than the balance. Output an appropriate message if the condition is true.
 Decrement the balance appropriately.
 5. Be sure to follow the spacing and indentation conventions mentioned in the text.
 6. If you have any questions as you proceed, ask your lab instructor for help.
+
+
+##Lab Exercise 2 — Modifying class GradeBook
+This problem is intended to be solved in a closed-lab session with a teaching assistant or instructor present. The
+problem is divided into five parts:
+
+1. Lab Objectives
+2. Problem of the Description
+3. Sample Output
+4. Program Template (Fig. L 3.4, Fig. L 3.5 and Fig. L 3.6)
+5. Problem-Solving Tips
+
+The program template represents a complete working C++ program, with one or more key lines of code replaced
+with comments. Read the problem description, and examine the sample output; then study the template code.
+Using the problem-solving tips as a guide, replace the /* */ comments with C++ code. Compile and execute the
+program. Compare your output with the sample output provided. The source code for the template is available
+from the Companion Website for C++ How to Program, Seventh Edition at www.pearsonhighered.com/deitel/.
+
+###Lab Objectives
+This lab was designed to reinforce programming concepts from Chapter 3 of C++ How to Program, Seventh Edi-
+tion. In this lab, you will practice:
+
+* Declaring data members.
+* Providing set and get functions to manipulate a data member’s value.
+* Declaring member functions with parameters.
+
+###Description of the Problem
+Modify class GradeBook (Fig. L 3.4 and Fig. L 3.6). Include a second string data member that represents the
+name of the course’s instructor. Provide a set function to change the instructor’s name and a get function to re-
+trieve it. Modify the constructor to specify two parameters—one for the course name and one for the instructor’s
+name. Modify member function displayMessage such that it first outputs the welcome message and course
+name, then outputs "This course is presented by: " followed by the instructor’s name. Modify the test ap-
+plication (Fig. L 3.6) to demonstrate the class’s new capabilities.
+
+###Sample Output
+```
+Welcome to the grade book for
+CS101 Introduction to C++ Programming!
+This course is presented by: Sam Smith
+Changing instructor name to Judy Jones
+Welcome to the grade book for
+CS101 Introduction to C++ Programming!
+This course is presented by: Judy Jones
+```
+
+###Program Template
+```C
+// Lab 2: GradeBook.h
+// Definition of GradeBook class that stores an instructor's name.
+#include <string> // program uses C++ standard string class
+using namespace std;
+
+// GradeBook class definition
+class GradeBook
+{
+public:
+	// constructor initializes course name and instructor name
+	GradeBook( string, string );
+	void setCourseName( string ); // function to set the course name
+	string getCourseName(); // function to retrieve the course name
+	/* write code to declare a get function for the instructor’s name */
+	/* write code to declare a set function for the instructor’s name */
+	void displayMessage(); // display welcome message and instructor name
+private:
+	string courseName; // course name for this GradeBook
+	string instructorName; // instructor name for this GradeBook
+}; // end class GradeBook
+```
+
+```C
+// Lab 2: GradeBook.cpp
+// Member-function definitions for class GradeBook.
+#include <iostream>
+using namespace std;
+
+// include definition of class GradeBook from GradeBook.h
+#include "GradeBook.h"
+
+// constructor initializes courseName and instructorName
+// with strings supplied as arguments
+GradeBook::GradeBook( string course, string instructor )
+{
+	setCourseName( course ); // initializes courseName
+	setInstructorName( instructor ); // initialiZes instructorName
+} // end GradeBook constructor
+
+// function to set the course name
+void GradeBook::setCourseName( string name )
+{
+	courseName = name; // store the course name
+} // end function setCourseName
+
+// function to retrieve the course name
+string GradeBook::getCourseName()
+{
+	return courseName;
+} // end function getCourseName
+
+/* write code to define a get member function for the instructor’s name */
+
+/* write code to define a set member function for the instructor’s name */
+
+// display a welcome message and the instructor's name
+void GradeBook::displayMessage()
+{
+	// display a welcome message containing the course name
+	cout << "Welcome to the grade book for\n" << getCourseName() << "!" << endl;
+/* write code to output the instructor’s name */
+} // end function displayMessage
+```
+
+```C
+// Lab 2: GradeBookTest.cpp
+// Test program for modified GradeBook class.
+#include <iostream>
+using namespace std;
+
+// include definition of class GradeBook from GradeBook.h
+#include "GradeBook.h"
+
+// function main begins program execution
+int main()
+{
+	// create a GradeBook object; pass a course name and instructor name
+	GradeBook gradeBook( "CS101 Introduction to C++ Programming" );
+
+	// display welcome message and instructor's name
+	gradeBook.displayMessage();
+	
+	/* write code to change instructor’s name and output changes */
+} // end main
+```
+
+###Problem-Solving Tips
+1. In class GradeBook, declare a string data member to represent the instructor’s name.
+2. Declare a public set function for the instructor’s name that does not return a value and takes a string
+as a parameter. In the body of the set function, assign the parameter’s value to the data member that
+represents the instructor’s name.
+3. Declare a public get function that returns a string and takes no parameters. This member function
+should return the instructor’s name.
+4. Modify the constructor to take two string parameters. Assign the parameter that represents the instruc-
+tor’s name to the appropriate data member.
+5. Add an output statement to member function displayMessage to output the value of the data member
+you declared earlier.
+6. Be sure to follow the spacing and indentation conventions mentioned in the text.
+7. If you have any questions as you proceed, ask your lab instructor for help.
+
+
+##Lab Exercise 3 — Creating an Employee Class
+This problem is intended to be solved in a closed-lab session with a teaching assistant or instructor present. The
+problem is divided into five parts:
+
+1. Lab Objectives
+2. Description of the Problem
+3. Sample Output
+4. Program Template (Fig. L 3.7, Fig. L 3.8 and Fig. L 3.9)
+5. Problem-Solving Tips
+
+The program template represents a complete working C++ program, with one or more key lines of code replaced
+with comments. Read the problem description and examine the sample output; then study the template code.
+Using the problem-solving tips as a guide, replace the /* */ comments with C++ code. Compile and execute the
+program. Compare your output with the sample output provided. The source code for the template is available
+from the Companion Website for C++ How to Program, Seventh Edition at www.pearsonhighered.com/deitel/.
+
+###Lab Objectives
+This lab was designed to reinforce programming concepts from Chapter 3 of C++ How to Program, Seventh Edi-
+tion. In this lab, you will practice:
+
+* Creating a class definition.
+* Declaring data members.
+* Defining a constructor.
+* Defining set and get functions.
+* Writing a test application to demonstrate the capabilities of another class.
+
+###Description of the Problem
+Create a class called Employee that includes three pieces of information as data members—a first name (type
+string), a last name (type string) and a monthly salary (type int). [Note: In subsequent chapters, we’ll use num-
+bers that contain decimal points (e.g., 2.75)—called floating-point values—to represent dollar amounts.] Your
+class should have a constructor that initializes the three data members. Provide a set and a get function for each
+data member. If the monthly salary is not positive, set it to 0. Write a test program that demonstrates class Em-
+ployee’s capabilities. Create two Employee objects and display each object’s yearly salary. Then give each Em-
+ployee a 10 percent raise and display each Employee’s yearly salary again.
+
+###Sample Output
+```
+Employee 1: Bob Jones; Yearly Salary: 34500
+Employee 2: Susan Baker; Yearly Salary: 37800
+Increasing employee salaries by 10%
+Employee 1: Bob Jones; Yearly Salary: 37944
+Employee 2: Susan Baker; Yearly Salary: 41580
+```
+
+###Program Template
+```C
+// Lab 3: Employee.h
+// Employee class definition.
+
+#include <string> // program uses C++ standard string class
+using namespace std;
+
+// Employee class definition
+class Employee
+{
+public:
+	/* Declare a constructor that has one parameter for each data member */
+	/* Declare a set method for the employee’s first name */
+	/* Declare a get method for the employee’s first name */
+	/* Declare a set method for the employee’s last name */
+	/* Declare a get method for the employee’s last name */
+	/* Declare a set method for the employee’s monthly salary */
+	/* Declare a get method for the employee’s monthly salary */
+private:
+	/* Declare a string data member for the employee’s first name */
+	/* Declare a string data member for the employee’s last name */
+	/* Declare an int data member for the employee’s monthly salary */
+}; // end class Employee
+```
+
+```C
+// Lab 3: Employee.cpp
+// Employee class member-function definitions.
+#include <iostream>
+using namespace std;
+
+#include "Employee.h" // Employee class definition
+/* Define the constructor. Assign each parameter value to the appropriate data member. Write code that validates the value of salary to ensure that it is not negative. */
+
+/* Define a set function for the first name data member. */
+
+/* Define a get function for the first name data member. */
+
+/* Define a set function for the last name data member. */
+
+/* Define a get function for the last name data member. */
+
+/* Define a set function for the monthly salary data member. Write code that validates the salary to ensure that it is not negative. */
+
+/* Define a get function for the monthly salary data member. */
+```
+
+```C
+// Lab 3: EmployeeTest.cpp
+// Create and manipulate two Employee objects.
+#include <iostream>
+using namespace std;
+
+#include "Employee.h" // include definition of class Employee
+
+// function main begins program execution
+int main()
+{
+	/* Create two Employee objects and assign them to Employee variables. */
+	
+	/* Output the first name, last name and salary for each Employee. */
+	
+	/* Give each Employee a 10% raise. */
+	
+	/* Output the first name, last name and salary of each Employee again. */
+} // end main
+```
+
+###Problem-Solving Tips
+1. Class Employee should declare three data members.
+2. The constructor must declare three parameters, one for each data member. The value for the salary
+should be validated to ensure it is not negative.
+3. Declare a public set and get member functions for each data member. The set functions should not re-
+turn values and should each specify a parameter of a type that matches the corresponding data member
+(string for first name and last name, int for the salary). The get functions should receive no parameters
+and should specify a return type that matches the corresponding data member.
+4. When you call the constructor from the main function, you must pass it three arguments that match the
+parameters declared by the constructor.
+5. Giving each employee a raise will require a call to the get function for the salary to obtain the current
+salary and a call to the set function for the salary to specify the new salary.
+6. Be sure to follow the spacing and indentation conventions mentioned in the text.
+7. If you have any questions as you proceed, ask your lab instructor for help.
