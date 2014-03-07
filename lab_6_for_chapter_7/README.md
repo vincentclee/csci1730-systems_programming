@@ -230,3 +230,170 @@ none have been made, then the data must already be in the proper order, so the p
 nate. If swaps have been made, then at least one more pass is needed.
 
 ##Lab Exercise 3 — Salespeople
+
+This problem is intended to be solved in a closed-lab session with a teaching assistant or instructor present. The
+problem is divided into six parts:
+
+1. Lab Objectives
+2. Description of the Problem
+3. Sample Output
+4. Program Template (Fig. L 7.4)
+5. Problem-Solving Tips
+6. Follow-Up Questions and Activities
+
+The program template represents a complete working C++ program, with one or more key lines of code replaced
+with comments. Read the problem description and examine the sample output; then study the template code.
+Using the problem-solving tips as a guide, replace the /* */ comments with C++ code. Compile and execute the
+program. Compare your output with the sample output provided. Then answer the follow-up questions. The
+source code for the template is available from the Companion Website for C++ How to Program, Seventh Edition
+at www.pearsonhighered.com/deitel/.
+
+###Lab Objectives
+This lab was designed to reinforce programming concepts from Chapter 7 of C++ How To Program, Seventh Edi-
+tion. In this lab, you will practice:
+
+* Using double-subscripted arrays to store tables of information.
+* Nesting for loops to access multiple-subscripted arrays.
+
+The follow-up question and activities also will give you practice:
+
+* Using const ints to declare identifiers that are used in an array declaration.
+* Initializing multidimensional arrays.
+* Using character arrays to store strings.
+
+###Description of the Problem
+Use a double-subscripted array to solve the following problem. A company has four salespeople (1 to 4) who sell
+five different products (1 to 5). Each salesperson passes in slips for each different type of product sold. Each slip
+contains the following:  
+a) The salesperson number  
+b) The product number  
+c) The total dollar value of that product sold that day  
+
+Thus, each salesperson passes in between 0 and 5 sales slips per day. Assume that the information from all of the
+slips for last month are available. Write a program that reads all this information for last month’s sales and sum-
+marize the total sales by salesperson by product. All totals should be stored in the two-dimensional array sales.
+After processing all the information for last month, print the results in tabular format with each of the columns
+representing a particular salesperson and each of the rows representing a particular product. Cross total each row
+to get the total sales of each product for last month; cross total each column to get the total sales by salesperson
+for last month. Your tabular printout should include these cross totals to the right of the totaled rows and to the
+bottom of the totaled columns.
+
+###Sample Output
+```
+Enter the salesperson (1 - 4), product number (1 - 5), and total sales.
+Enter -1 for the salesperson to end input.
+1 1 9.99
+1 2 12.49
+1 5 19.98
+2 3 15.75
+2 4 21.23
+3 1 17.33
+4 5 22.22
+4 1 19.65
+-1
+The total sales for each salesperson are displayed at the end of each row,
+and the total sales for each product are displayed at the bottom of each column.
+
+           1      2      3      4      5   Total
+1       9.99  12.49   0.00   0.00  19.98   42.46
+2       0.00   0.00  15.75  21.23   0.00   36.98
+3      17.33   0.00   0.00   0.00   0.00   17.33
+4      19.65   0.00   0.00   0.00  22.22   41.87
+
+Total  46.97  12.49  15.75  21.23  42.20
+Press any key to continue . . . 
+```
+
+###Template
+```C
+// Lab 3: sales.cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+	const int PEOPLE = 5;
+	const int PRODUCTS = 6;
+	/* Write the declaration for array sales here */
+	double value;
+	double totalSales;
+	double productSales[ PRODUCTS ] = { 0.0 };
+	int salesPerson;
+	int product;
+
+	// enter sales slips
+	cout << "Enter the salesperson (1 - 4), product number (1 - 5), and " << "total sales.\nEnter -1 for the salesperson to end input.\n";
+	
+	cin >> salesPerson;
+	
+	// continue receiving input for each salesperson until -1 is entered
+	while ( salesPerson != -1 )
+	{
+		cin >> product >> value;
+		/* Write a statement that adds values to the proper element in the sales array */
+		cin >> salesPerson;
+	} // end while
+	
+	cout << "\nThe total sales for each salesperson are displayed at the "
+		<< "end of each row,\n" << "and the total sales for each product "
+		<< "are displayed at the bottom of each column.\n " << setw( 12 )
+		<< 1 << setw( 12 ) << 2 << setw( 12 ) << 3 << setw( 12 ) << 4
+		<< setw( 12 ) << 5 << setw( 13 ) << "Total\n" << fixed << showpoint;
+
+	// display salespeople and sales
+	for ( int i = 1; /* Write condition here */; i++ )
+	{
+		totalSales = 0.0;
+		cout << i;
+
+		// add total sales, and display individual sales
+		for ( int j = 1; /* Write condition here */; j++ )
+		{
+			/* Write a statement that adds the current sales element to totalSales */
+			cout << setw( 12 ) << setprecision( 2 ) << sales[ i ][ j ];
+			/* Write a statement that adds the current sales element to productSales */
+		} // end inner for
+		
+		cout << setw( 12 ) << setprecision( 2 ) << totalSales << '\n';
+	} // end outer for
+
+	cout << "\nTotal" << setw( 8 ) << setprecision( 2 ) << productSales[ 1 ];
+
+	// display total product sales
+	for ( int j = 2; j < PRODUCTS; j++ )
+		cout << setw( 12 ) << setprecision( 2 ) << productSales[ j ];
+	
+	cout << endl;
+} // end main
+```
+
+###Problem-Solving Tips
+1. This problem asks the reader to input a series of numbers representing the salesperson number, product
+number and the dollar amount. The product number and salesperson number represent the row sub-
+script and column subscript in the sales array where the dollar amount is added. Each array begins with
+subscript zero; therefore, it is recommended that you oversize the array by one element in each dimen-
+sion. This allows you to map the product number and salesperson number directly to a subscript with-
+out having to subtract one.
+2. Table columns contain the total sales for each product. Table rows contain the sales figures for each
+salesperson. To create the output, the table header must first be printed. (See template.) When program
+control reaches the outer for loop, the salesperson number is printed. The inner for loop prints the
+amount of each product that the salesperson sold. When the inner loop finishes, control returns to the
+outer loop and the \n character is printed.
+3. To display totals in the right-most column, simply sum each element in the row and display the total.
+This is best done when the array is output. To display the totals at the bottom, declare a one-dimen-
+sional array of five elements. While outputting sales, simply add the current column’s value to the ap-
+propriate element of the single-subscripted array. After outputting sales and the totals for each row,
+iterate through the single-subscripted array and output its values.
+
+###Follow-Up Questions and Activities
+1. Explain why keyword const must be present when declaring the variables PRODUCTS and PEOPLE. Why do
+these two constants have the values 6 and 5 rather than 5 and 4?
+2. Change the declaration of productSales, in your solution that corresponds to line 18 in the program tem-
+plate, so that salesperson 1 has sold $75.00 of product 3 initially and so that salesperson 4 has sold $63.00
+of product 1 initially. All other array values should be initialized to 0.0. [Hint: Use an initializer list to ini-
+tialize the array.]
+3. Create an additional array that stores the names of all of the salespeople. Allow the user to input the first
+names of the four employees. Limit the names to 20 characters. When generating the output table, use the
+names of the salespeople rather than numbers.
+
