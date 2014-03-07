@@ -113,7 +113,7 @@ int main()
 } // end main
 ```
 
-Problem-Solving Tips
+###Problem-Solving Tips
 1. Notice that the number of customers is not specified in advance. The problem statement implies that
 you should use a sentinel-controlled the loop.
 2. The input data consists of one integer and four monetary amounts. The monetary amounts are numbers
@@ -136,7 +136,7 @@ control statement, place a line of vertical space to make the control statement 
 body statements of main, and indent all the body statements of each control statement.
 9. Print your outputs neatly in the indicated format. Use setprecision( 2 ) to force two positions of pre-
 cision to the right of the decimal point when printing monetary amounts. You will need to
-#include <iomanip> to use function setprecision( 2 ).
+`#include <iomanip> to use function setprecision( 2 ).`
 10. Also remember to use the fixed manipulator. This manipulator specifies that the number output
 should be output in fixed notation, as opposed to scientific. Fixed notation always keeps a “fixed” decimal point, regardless of the number of digits displayed. For example,
 1.50000000000 is expressed in fixed notation. Scientific notation displays numbers in a format such as
@@ -156,4 +156,152 @@ Enter beginning balance: Enter total charges:
 
 2. Why is it necessary to ask the user to input the first account number before you begin the while loop? What
 problems could occur if the user were asked for an account number only inside the while loop?
+
+
+##Lab Exercise 2 — Payroll
+This problem is intended to be solved in a closed-lab session with a teaching assistant or instructor present. The
+problem is divided into six parts:
+
+1. Lab Objectives
+2. Description of the Problem
+3. Sample Output
+4. Program Template (Fig. L 4.2)
+5. Problem-Solving Tips
+6. Follow-Up Questions and Activities
+
+The program template represents a complete working C++ program, with one or more key lines of code replaced
+with comments. Read the problem description and examine the sample output; then study the template code.
+Using the problem-solving tips as a guide, replace the /* */ comments with C++ code. Compile and execute the
+program. Compare your output with the sample output provided. Then answer the follow-up questions. The
+source code for the template is available from the Companion Website for C++ How to Program, Seventh Edition
+at www.pearsonhighered.com/deitel/.
+
+###Lab Objectives
+This lab was designed to reinforce programming concepts from Chapter 4 of C++ How To Program, Seventh Edi-
+tion. In this lab, you will practice:
+
+* Using sentinel-controlled repetition.
+* Using if...else selection statements.
+
+The follow-up questions and activities also will give you practice:
+
+* Experimenting with <iomanip>.
+* Using nested if...else statements.
+
+###Description of the Problem
+Develop a C++ program that uses a while statement to determine the gross pay for each of several employees.
+The company pays “straight time” for the first 40 hours worked by each employee and pays “time-and-a-half”
+for all hours worked in excess of 40 hours. You are given a list of the employees of the company, the number of
+hours each employee worked last week and the hourly rate of each employee. Your program should input this
+information for each employee and should determine and display the employee's gross pay.
+
+###Sample Output
+```
+Enter hours worked (-1 to end): 39
+Enter hourly rate of the worker ($00.00): 10.00
+Salary is $390.00
+Enter hours worked (-1 to end): 40
+Enter hourly rate of the worker ($00.00): 10.00
+Salary is $400.00
+Enter hours worked (-1 to end): 41
+Enter hourly rate of the worker ($00.00): 10.00
+Salary is $415.00
+Enter hours worked (-1 to end): -1
+```
+
+###Template
+```C
+// Lab 2: Payroll.cpp
+// Calculate wages for a payroll.
+#include <iostream>
+#include <iomanip> // parameterized stream manipulators
+using namespace std;
+
+int main()
+{
+	/* Write declarations for hours, rate and salary */
+
+	// processing phase
+	// get first employee's hours worked
+	cout << "Enter hours worked (-1 to end): ";
+	in >> hours;
+
+	// set floating-point number format
+	/* Write code to use the stream manipulators fixed and setprecision to set the floating-point number format */
+
+	// loop until sentinel value read from user
+	/* Write the while loop */
+	{
+		// get hourly rate
+		/* Write code to prompt for and input hourly rate */
+
+		// if employee worked less than 40 hours
+		/* Write code to determine whether hours worked was less than or equal to 40 and if so, calculate base pay. If not, calculate base + overtime pay */
+		
+		/* Write code to display the salary */
+		// prompt for next employee's data
+		cout << "\n\nEnter hours worked (-1 to end): ";
+		cin >> hours;
+	} // end while
+} // end main
+```
+
+###Problem-Solving Tips
+1. Notice that the number of employees is not specified in advance. The problem statement implies that
+you should use a sentinel value to control the loop.
+2. The input data consists of two doubles per employee, one for the number of hours worked and one for
+the hourly rate.
+3. You will use a while loop to process several sets of employee data.
+4. Before the loop, you will prompt for the number of hours worked. Inside the loop, you will prompt for
+the hourly rate. It is a good programming practice to remind the user of the sentinel value in each
+prompting message. After processing the data, you obtain the next employee’s number of hours worked.
+5. What sentinel value should you use? It needs to be a value that will not be confused with one of the
+legitimate data input values. A good choice for this program would be to use –1 for the employee’s num-
+ber of hours worked, because the number of hours worked must be a nonnegative value.
+6. While you could prompt each time for both pieces of information needed for a customer, a better strat-
+egy would be to prompt just for the number of hours worked. If it is -1, terminate the loop. If it is not
+-1, prompt for the remaining piece of data for that employee, namely, the hourly rate.
+7. How do you calculate the pay for each employee? If the person worked 40 hours or less, multiply the
+number of hours worked times the hourly salary; otherwise (else), calculate the pay by multiplying 40
+times the hourly salary rate and adding to this value to the number of overtime hours times the overtime
+rate. The number of overtime hours is the number of hours in excess of the first 40 hours worked (i.e.,
+hours – 40), and the overtime salary is 1.5 times the hourly rate.
+8. Be sure to follow the spacing and indentation conventions mentioned in the text. Before and after each
+control statement, place a line of vertical space to make the control statement stand out. Indent all the
+body statements of main and indent all of the body statements of each control statement.
+9. Print your outputs neatly in the indicated format. Remember to use setprecision( 2 ) to force two
+positions of precision to the right of the decimal point when printing monetary amounts. You will need
+to #include <iomanip> to use function setprecision( 2 ).
+10. Also remember to use manipulator fixed. This manipulator specifies that the number output should
+be output in fixed notation, as opposed to scientific notation (scientific). Fixed notation always keeps
+a “fixed” decimal point, regardless of the number of digits displayed. For example, 1.50000000000 is
+expressed in fixed notation. Scientific notation displays numbers in a format such as 1.5E+10.
+11. If you have any questions as you proceed, ask your lab instructor for help.
+
+###Follow-Up Questions and Activities
+1. Remove the setprecision manipulator on line 23. The line should now read as follows:
+`cout << fixed;`  
+Run the program again. Compare the output with the prior output. What are the differences? What is the
+default precision?
+2. Modify the code so that if an employee works exactly 55 hours, that employee receives a $100 bonus, but
+no longer receives overtime for the number of hours worked over 40. Make an additional modification that
+if the employee works 75 hours or more, that employee receives a $1000 bonus in addition to overtime. De-
+termining how to nest the if...else structures properly might seem complicated. It is recommended that
+your code resemble the following pseudocode:  
+
+```
+If worked 40 hours or less
+Calculate salary
+Else
+Calculate base salary for 40 hours
+If worked 55 hours
+Add a $100 bonus to base salary
+Else
+Add overtime salary to base salary
+If worked 75 hours or more
+Add a $1000 bonus to base salary
+```
+
+Test your code based on an hourly rate of $10. How much does someone who worked exactly 55 hours earn?
+How much does someone who worked 56 hours earn? How much does someone who worked 75 hours earn?
 
