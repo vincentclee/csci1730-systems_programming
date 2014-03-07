@@ -29,14 +29,14 @@ The follow-up questions and activities also will give you practice:
 ###Description of the Problem
 Develop a C++ program that will determine whether a department-store customer has exceeded the credit limit
 on a charge account. For each customer, the following information is available:
-a) Account number (an integer);
-b) Balance at the beginning of the month;
-c) Total of all items charged by the customer this month;
-d) Total of all credits applied to the customer’s account this month;
-e) Allowed credit limit.
 
-The program should use a while loop to input each of these facts, calculate the new balance (= beginning balance
-+ charges – credits) and determine whether the new balance exceeds the customer’s credit limit. For those cus-
+1. Account number (an integer);
+2. Balance at the beginning of the month;
+3. Total of all items charged by the customer this month;
+4. Total of all credits applied to the customer’s account this month;
+5. Allowed credit limit.
+
+The program should use a while loop to input each of these facts, calculate the new balance (= beginning balance + charges – credits) and determine whether the new balance exceeds the customer’s credit limit. For those cus-
 tomers whose credit limit is exceeded, the program should display the customer's account number, credit limit,
 new balance and the message "Credit Limit Exceeded."
 
@@ -76,32 +76,40 @@ Enter account number (-1 to end): -1
 #include <iostream>
 #include <iomanip> // parameterized stream manipulators
 using namespace std;
+
 int main()
 {
-int account; // account number
-/* Write declarations for four double variables:
-balance, charges, credits and creditLimit */
-cout << "Enter account number (-1 to end): ";
-/* Write code to read the customer's account number */
-// set floating-point number format
-/* Write code to use the stream manipulators fixed and
-setprecision to set the floating-point number format */
-// exit if the input is -1 otherwise, proceed with the program
-/* Write a while loop with a condition that tests for the sentinel value */
-{
-/* Write code to prompt for and input the customer's balance */
-/* Write code to prompt for and input the customer's charges */
-/* Write code to prompt for and input the customer's credits */
-/* Write code to prompt for and input the customer's credit limit */
-// calculate and display new balance
-/* Write a statement to calculate the customer's new balance */
-/* Display the new balance */
-// display a warning if the user has exceed the credit limit
-/* Write an if statement to determine whether the credit limit is exceeded */
-/* Display a message if the credit limit was exceeded */
-cout << "\n\nEnter Account Number (or -1 to quit): ";
-/* Write code to input the next account number */
-} // end while
+	int account; // account number
+	/* Write declarations for four double variables: balance, charges, credits and creditLimit */
+	
+	cout << "Enter account number (-1 to end): ";
+	/* Write code to read the customer's account number */
+
+	// set floating-point number format
+	/* Write code to use the stream manipulators fixed and setprecision to set the floating-point number format */
+
+	// exit if the input is -1 otherwise, proceed with the program
+	/* Write a while loop with a condition that tests for the sentinel value */
+	{
+		/* Write code to prompt for and input the customer's balance */
+
+		/* Write code to prompt for and input the customer's charges */
+		
+		/* Write code to prompt for and input the customer's credits */
+		
+		/* Write code to prompt for and input the customer's credit limit */
+
+		// calculate and display new balance
+		/* Write a statement to calculate the customer's new balance */
+		/* Display the new balance */
+		
+		// display a warning if the user has exceed the credit limit
+		/* Write an if statement to determine whether the credit limit is exceeded */
+			/* Display a message if the credit limit was exceeded */
+		
+		cout << "\n\nEnter Account Number (or -1 to quit): ";
+		/* Write code to input the next account number */
+	} // end while
 } // end main
 ```
 
