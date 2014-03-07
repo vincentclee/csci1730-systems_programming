@@ -190,5 +190,108 @@ cout << " is a multiple of ";
 cout << number2 << endl;
 ```
 Rerun the program and observe the differences. Why is the output different?
+
 4. Modify the program to determine whether a number entered is even or odd. [Note: Now, the user needs to
 enter only one number.]
+
+##Lab Exercise 3 — Separating Digits
+
+This problem is intended to be solved in a closed-lab session with a teaching assistant or instructor present. The
+problem is divided into six parts:
+
+1. Lab Objectives
+2. Description of the Problem
+3. Sample Output
+4. Program Template (Fig. L 2.6)
+5. Problem-Solving Tips
+6. Follow-Up Questions and Activities
+
+The program template represents a complete working C++ program, with one or more key lines of code replaced
+with comments. Read the problem description and examine the sample output; then study the template code.
+Using the problem-solving tips as a guide, replace the /* */ comments with C++ code. Compile and execute the
+program. Compare your output with the sample output provided. Then answer the follow-up questions. The
+source code for the template is available from the Companion Website for C++ How to Program, Seventh Edition
+at www.pearsonhighered.com/deitel/.
+
+###Lab Objectives
+This lab was designed to reinforce programming concepts from Chapter 2 of C++ How To Program, Seventh Edi-
+tion. In this lab, you will practice:
+
+* Using the modulus operator (%) to determine the remainder of a division operation.
+* Integer division, which differs from floating-point division because integer division truncates the deci-
+   mal portion of the result.
+
+The follow-up questions and activities also will give you practice:
+
+* Using the division and modulus operators.
+* Examining what happens during program execution when the user enters invalid input.
+* Adapting a program to solve a similar problem.
+
+###Problem Description
+Write a program that inputs a five-digit number, separates the number into its individual digits and prints the
+digits separated from one another by three spaces each. [Hint: Use integer division and the modulus operator.]
+For example, if the user inputs 42339, the program should print what is shown in the sample output.
+
+###Sample Output
+```
+4  2  3  3  9
+```
+
+###Template
+```C
+// Lab 3: digits.cpp
+#include <iostream> // allows program to perform input and output
+using namespace std;
+
+int main()
+{
+	int number; // integer read from user
+	
+	cout << "Enter a five-digit integer: "; // prompt
+	cin >> number; // read integer from user
+
+	/* Write a statement to print the left-most digit of the 5-digit number */
+	/* Write a statement that changes number from 5-digits to 4-digits */
+	/* Write a statement to print the left-most digit of the 4-digit number */
+	* Write a statement that changes number from 4-digits to 3-digits */
+	* Write a statement to print the left-most digit of the 3-digit number */
+	* Write a statement that changes number from 3-digits to 2-digits */
+	* Write a statement to print the left-most digit of the 2-digit number */
+	* Write a statement that changes number from 2-digits to 1-digit */
+	out << number << endl;
+} // end main
+```
+
+###Problem-Solving Tips
+1. The input data consists of one integer, so you will use an int variable (number) to represent it. Note that
+the description indicates that one five-digit number is to be input—not five separate digits.
+2. You will use a series of statements to “break down” the number into its individual digits using modulus
+(%) and division (/) calculations.
+3. After the number has been input using cin, divide the number by 10000 to get the leftmost digit. Why
+does this work? In C++, dividing an integer by an integer results in an integer. For example, 42339 /
+10000 evaluates to 4 because 10000 divides evenly into 42339 four times. The remainder 2339 is trun-
+cated.
+4. Change the number to a 4-digit number using the modulus operator. The number modulus 10000 eval-
+uates to the integer remainder—in this case, the right-most four digits. For example, 42339 % 10000 re-
+sults in 2339. Assign the result of this modulus operation to the variable that stores the five-digit number
+input.
+5. Repeat this pattern of division and modulus reducing the divisor by a factor of 10 each time (i.e., 1000,
+100, 10). After the number is changed to a four-digit number, divide/modulus by 1000. After the num-
+ber is changed to a three-digit number, divide/modulus by 100. And so on.
+6. Be sure to follow the spacing and indentation conventions mentioned in the text.
+7. If you have any questions as you proceed, ask your lab instructor for assistance.
+
+###Follow-Up Questions and Activities
+1. What are the results of the following expressions?  
+24 / 5 =  
+18 % 3 =  
+13 % 9 =  
+13 / 2 % 2 =
+2. What happens when the user inputs a number which has fewer than five digits? Why? What is the output
+when 1763 is entered?
+3. The program you completed in this lab exercise inputs a number with multiple digits and separates the dig-
+its. Write the inverse program, a program which asks the user for three one-digit numbers and combines
+them into a single three-digit number. [Hint: Use multiplication and addition to form the three-digit num-
+ber.]
+
+
