@@ -52,30 +52,30 @@ Template
 // Determine whether inputs are odd or even.
 #include <iostream>
 using namespace std;
-/* Write a function prototype for function even, which takes an int parameter
-and returns a bool */
+
+/* Write a function prototype for function even, which takes an int parameter and returns a bool */
+
 int main()
 {
-int x; // current input
-// loop for 3 inputs
-for ( int i = 1; i <= 3; i++ )
-{
-cout << "Enter an integer: ";
-cin >> x;
-// determine if
-if ( /* Write a
-cout << x <<
-else
-cout << x <<
-} // end for
-input is even
-call to function even to determine if x is even */ )
-" is an even integer\n\n";
-" is an odd integer\n\n";
-cout << endl;
+   int x; // current input
+
+   // loop for 3 inputs
+   for ( int i = 1; i <= 3; i++ )
+   {
+      cout << "Enter an integer: ";
+      cin >> x;
+      
+      // determine if input is even
+      if ( /* Write a call to function even to determine if x is even */ )
+         cout << x << " is an even integer\n\n";
+      else
+         cout << x << " is an odd integer\n\n";
+   } // end for
+
+   cout << endl;
 } // end main
-/* Define function even. Use the modulus operator to determine if an integer
-is evenly divisible by two. */
+
+/* Define function even. Use the modulus operator to determine if an integer is evenly divisible by two. */
 ```
 ###Problem-Solving Tips
 1. Function even contains an algorithm for determining if a number is even. Function even should return
