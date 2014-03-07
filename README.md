@@ -15,7 +15,7 @@ Prentice Hall
 ISBN-13: 9780132662369  
 
 ###People:
-* Instructor: Tianming Liu, tliu@cs.uga.edu
+* Instructor: [Tianming Liu](http://cobweb.cs.uga.edu/~tliu/), tliu@cs.uga.edu
 * Teaching Assistant: to be announced. 
 
 ###Times and Places
