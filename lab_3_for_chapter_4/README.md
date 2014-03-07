@@ -291,17 +291,139 @@ your code resemble the following pseudocode:
 
 ```
 If worked 40 hours or less
-Calculate salary
+	Calculate salary
 Else
-Calculate base salary for 40 hours
-If worked 55 hours
-Add a $100 bonus to base salary
-Else
-Add overtime salary to base salary
-If worked 75 hours or more
-Add a $1000 bonus to base salary
+	Calculate base salary for 40 hours
+
+	If worked 55 hours
+		Add a $100 bonus to base salary
+	Else
+		Add overtime salary to base salary
+
+	If worked 75 hours or more
+		Add a $1000 bonus to base salary
 ```
 
 Test your code based on an hourly rate of $10. How much does someone who worked exactly 55 hours earn?
 How much does someone who worked 56 hours earn? How much does someone who worked 75 hours earn?
+
+
+##Lab Exercise 3 — Square of Asterisks
+This problem is intended to be solved in a closed-lab session with a teaching assistant or instructor present. The
+problem is divided into six parts:
+
+1. Lab Objectives
+2. Description of the Problem
+3. Sample Output
+4. Program Template (Fig. L 4.5)
+5. Problem-Solving Tips
+6. Follow-Up Question and Activity
+
+The program template represents a complete working C++ program, with one or more key lines of code replaced
+with comments. Read the problem description and examine the sample output; then study the template code.
+Using the problem-solving tips as a guide, replace the /* */ comments with C++ code. Compile and execute the
+program. Compare your output with the sample output provided. Then answer the follow-up question. The
+source code for the template is available from the Companion Website for C++ How to Program, Seventh Edition
+at www.pearsonhighered.com/deitel/.
+
+###Lab Objectives
+This lab was designed to reinforce programming concepts from Chapter 4 of C++ How To Program, Seventh Edi-
+tion. In this lab, you will practice:
+
+* Using counter-controlled repetition.
+* Nesting while loops.
+
+The follow-up question and activity also will give you practice:
+
+* Modifying nested while loops.
+
+###Description of the Problem
+Write a program that reads in the size of the side of a square and then prints a hollow square of that size out of
+asterisks and blanks. Your program should work for squares of all side sizes between 1 and 20. For example, if
+your program reads a size of 5, it should print.
+```
+*****
+*   *
+*   *
+*   *
+*****
+```
+
+###Sample Output
+```
+Enter length of side: 8
+********
+*      *
+*      *
+*      *
+*      *
+*      *
+*      *
+********
+```
+
+###Template
+```C
+// Lab 3: Asterisks.cpp
+// Draw a square of asterisks.
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int stars; // number of stars on a side
+	int column; // the current column of the square being printed
+	int row = 1; // the current row of the square being printed
+
+	// prompt and read the length of the side from the user
+	cout << "Enter length of side: ";
+	cin >> stars;
+
+	// valid input, if invalid, set to default
+	/* Write an if statement to test whether stars is less than 1 */
+	{
+		stars = 1;
+		cout << "Invalid Input\nUsing default value 1\n";
+	} // end if
+
+	/* Write an else if statement to test whether stars is greater than 20 */
+	{
+		stars = 20;
+		cout << "Invalid Input\nUsing default value 20\n";
+	} // end else if
+
+	// repeat for as many rows as the user entered
+	/* Write a while statement to count rows */
+	{
+		column = 1;
+		
+		// and for as many columns as rows
+		/* Write a while statement to count columns */
+		{
+			/* Write a series of if, else if, ... statements to determine whether an asterisk or a space should be displayed at this position in the square */
+			/* Increment the column counter */
+		} // end inner while
+
+		cout << endl;
+		/* Increment the row counter */
+	} // end outer while
+} // end main
+```
+
+###Problem-Solving Tips
+1. To display your hollow square, you will need two nested while loops, one of which will iterate over the
+rows of the square and the other of which will iterate over the columns of the square.
+2. Inside the outer while loop, you should initialize the counter variable for the inner while loop, perform
+the inner while loop and then output a newline.
+3. Inside the inner while loop, you should display one character, an asterisk if this position occurs in the
+first row, last row, first column or last column, or a space otherwise.
+4. Be sure to follow the spacing and indentation conventions mentioned in the text. Before and after each
+control statement, place a line of vertical space to make the control statement stand out. Indent all the
+body statements of main, and indent all the body statements of each control statement.
+5. If you have any questions as you proceed, ask your lab instructor for help.
+
+###Follow-Up Question and Activity
+1. Modify your program so that the user enters two integers, each between 1 and 20, inclusive. The program
+will then display a rectangle of asterisks, using the first integer as the number of rows and the second integer
+as the number of columns.
 
