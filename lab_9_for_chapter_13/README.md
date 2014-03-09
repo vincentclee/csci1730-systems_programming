@@ -346,3 +346,256 @@ Here are the new height and weight values
 50	52
 ```
 
+###Broken Code
+```C
+// Debugging: Animal.h
+#ifndef ANIMAL_H
+#define ANIMAL_H
+
+#include <string>
+using namespace std;
+
+// Note: class Animal is an abstract class
+// class Animal definition
+class Animal
+{
+public:
+	Animal( int = 0, int = 0 );
+	void setHeight( int );
+	virtual int getHeight() const = 0;
+	void setWeight( int );
+	virtual int getWeight() const = 0;
+	virtual void print() const = 0;
+private:
+	int height;
+	int weight;
+}; // end class Animal
+
+#endif // ANIMAL_H
+```
+
+```C
+// Debugging: Animal.cpp
+#include <iostream>
+using namespace std;
+
+#include "Animal.h"
+
+// default constructor
+Animal::Animal( int h, int w )
+{
+	height = h;
+	weight = w;
+} // end class Animal constructor
+
+// function print definition
+virtual void Animal::print() const
+{
+	cout << "This animal's height and weight are as follows:\n"
+		<< "Height: " << height << "\tWeight: " << weight
+		<< endl << endl;
+} // end function print
+
+// return height
+int Animal::getHeight() const
+{
+	return height;
+} // end function getHeight
+
+// return weight
+int Animal::getWeight() const
+{
+	return weight;
+} // end function getWeight
+
+// function setHeight definition
+virtual void Animal::setHeight( int h )
+{
+	height = h;
+} // end function setHeight
+
+// function setWeight definition
+virtual void Animal::setWeight( int w )
+{
+	weight = w;
+} // end function setWeight
+```
+
+```C
+// Debugging: Lion.h
+#ifndef LION_H
+#define LION_H
+
+#include "Animal.h"
+
+// class Lion definition
+class Lion : public Animal
+{
+public:
+	Lion( int = 0, int = 0 );
+	virtual void print() const;
+}; // end class Lion
+
+#endif // LION_H
+```
+
+```C
+// Debugging: Lion.cpp
+#include <iostream>
+using namespace std;
+
+#include "Lion.h"
+
+// default constructor
+Lion::Lion( int h, int w )
+: Animal( h, w )
+{
+	// empty
+} // end class Lion constructor
+
+// function print definition
+void Lion::print() const
+{
+	cout << "This animal is a lion\n";
+	Animal::print();
+} // end function print
+```
+
+```C
+// Debugging: Dog.h
+#ifndef DOG_H
+#define DOG_H
+
+#include "Animal.h"
+
+// class Dog definition
+class Dog : public Animal
+{
+public:
+	Dog( int = 0, int = 0, string = "Toto" );
+	virtual void print() const = 0;
+	virtual void getHeight() const = 0;
+	virtual void getWeight() const = 0;
+	string getName() const;
+	void setName( string );
+private:
+	bool useMetric( string ) const;
+	string name;
+	int metricHeight;
+	int metricWeight;
+}; // end class Dog
+
+#endif // DOG_H
+```
+
+```C
+// Debugging Dog.cpp
+#include <iostream>
+using namespace std;
+
+#include "Dog.h"
+
+// default constructor
+Dog::Dog( int h, int w, string n )
+: Animal( h, w )
+{
+	setName( n );
+	metricHeight = h * 2.5;
+	metricWeight = w / 2.2;
+} // end class Dog constructor
+
+// return name
+string Dog::getName() const
+{
+	return name;
+} // end function getName
+
+// function setName definition
+void Dog::setName( string n )
+{
+	name = n;
+} // end function setName
+
+// function print definition
+void Dog::print() const
+{
+	cout << "This animal is a dog, its name is: " << name << endl;
+	Animal::print();
+} // end function print
+
+// return height
+int Dog::getHeight()
+{
+	if ( useMetric( "height" ) )
+		return metricHeight;
+	else
+		return Animal::getHeight();
+} // end function print
+
+// return weight
+int Dog::getWeight()
+{
+	if ( useMetric( "weight" ) )
+		return metricWeight;
+	else
+		return Animal::getWeight();
+} // end function getWeight
+
+// function useMetric definition
+bool Dog::useMetric( string type ) const
+{
+	int choice = 0;
+	cout << "Which units would you like to see the "
+		<< type << " in? (Enter 1 or 2)\n"
+		<< "\t1. metric\n"
+		<< "\t2. standard\n";
+
+	cin >> choice;
+	if ( choice == 1 )
+		return true;
+	else
+		return false;
+} // end function useMetric
+```
+
+```C
+// Debugging: Debugging.cpp
+#include <iostream>
+using namespace std;
+
+#include "Animal.h"
+#include "Lion.h"
+#include "Dog.h"
+
+void setHeightWeight( Animal ) const;
+int main()
+{
+	Dog dog1( 60, 120, "Fido" );
+	Lion lion1( 45, 300 );
+	setHeightWeight( lion1 );
+	setHeightWeight( dog1 );
+} // end main
+
+// function setHeightWeight definition
+void setHeightWeight( Animal )
+{
+	int height;
+	int weight;
+	a->print();
+	cout << "Enter a new height (using standard units): ";
+	cin >> height;
+	a->setHeight( height );
+	
+	cout << "Enter a new weight (using standard units): ";
+	cin >> weight;
+	a->setWeight( weight );
+	
+	height = a->getHeight();
+	weight = a->getWeight();
+	
+	cout << "Here are the new height and weight values:\n"
+		<< height << endl
+		<< weight << endl << endl;
+} // end function setHeightWeight
+```
+
